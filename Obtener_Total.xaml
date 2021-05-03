@@ -1,6 +1,7 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Obtener_Toal" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
     <x:Property Name="PosicionCode" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -135,12 +136,8 @@
               </Sequence>
               <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ContieneEUR workflow" sap:VirtualizedContainerService.HintSize="483.2,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_7" UnSafe="False" WorkflowFileName="ContieneEUR.xaml">
                 <ui:InvokeWorkflowFile.Arguments>
-                  <InArgument x:TypeArguments="sd:DataTable" x:Key="TableInput">
-                    <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="ExtractDataTable" />
-                  </InArgument>
-                  <OutArgument x:TypeArguments="x:Boolean" x:Key="TableContieneEUR">
-                    <mva:VisualBasicReference x:TypeArguments="x:Boolean" ExpressionText="ContieneEURB" />
-                  </OutArgument>
+                  <InArgument x:TypeArguments="sd:DataTable" x:Key="TableInput">[ExtractDataTable]</InArgument>
+                  <OutArgument x:TypeArguments="x:Boolean" x:Key="TableContieneEUR">[ContieneEURB]</OutArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <If Condition="[ContieneEURB]" sap:VirtualizedContainerService.HintSize="483.2,292.8" sap2010:WorkflowViewState.IdRef="If_1">
@@ -152,6 +149,9 @@
                       </InArgument>
                       <InArgument x:TypeArguments="x:Int32" x:Key="PosicionCode">
                         <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="PosicionCode" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+                        <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
                       </InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>

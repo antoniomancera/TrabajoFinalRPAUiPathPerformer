@@ -90,25 +90,22 @@
     </Assign>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke ObtenerNumCelda workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="ObtenerNumCelda.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="in_Transaction">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="VendorCode" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Int32" x:Key="Posicion">
-          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="PosExcelCode" />
-        </OutArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_Transaction">[VendorCode]</InArgument>
+        <OutArgument x:TypeArguments="x:Int32" x:Key="Posicion">[PosExcelCode]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Buscar_Invoice workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="Buscar_Invoice.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="Vendor_Code">
-          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="VendorCode" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Vendor_Code">[VendorCode]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke Obtener_Toal workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Obtener_Total.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="x:Int32" x:Key="PosicionCode">
           <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="PosExcelCode" />
+        </InArgument>
+        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
+          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
         </InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>

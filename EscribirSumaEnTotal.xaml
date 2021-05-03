@@ -2,11 +2,12 @@
   <x:Members>
     <x:Property Name="TableInput" Type="InArgument(sd:DataTable)" />
     <x:Property Name="PosicionCode" Type="InArgument(x:Int32)" />
+    <x:Property Name="in_Config" Type="InArgument(scg:Dictionary(x:String, x:Object))" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>778.4,1062.4</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>778.4,732</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>EscribirSumaEnTotal_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -71,7 +72,7 @@
       <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="EscribirSumaEnTotal" sap:VirtualizedContainerService.HintSize="475.2,997.6" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="EscribirSumaEnTotal" sap:VirtualizedContainerService.HintSize="375.2,667.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="Resultado" />
       <Variable x:TypeArguments="sd:DataTable" Name="TableConEUR" />
@@ -81,59 +82,30 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FiltrarEUR workflow" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="FiltrarEUR.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FiltrarEUR workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="FiltrarEUR.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="TableInput">[TableInput]</InArgument>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="TableOutput">[TableConEUR]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke QuitarEUR workflow" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="QuitarEUR.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke QuitarEUR workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="QuitarEUR.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="TableInput">[TableConEUR]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SumarColumna workflow" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="SumarColumna.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SumarColumna workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="SumarColumna.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="TableInput">
-          <mva:VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="TableConEUR" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Double" x:Key="Resultado">
-          <mva:VisualBasicReference x:TypeArguments="x:Double" ExpressionText="Resultado" />
-        </OutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="TableInput">[TableConEUR]</InArgument>
+        <OutArgument x:TypeArguments="x:Double" x:Key="Resultado">[Resultado]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke EscribirCelda workflow" sap:VirtualizedContainerService.HintSize="433.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="EscribirCelda.xaml">
+    <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke EscribirCelda workflow" sap:VirtualizedContainerService.HintSize="333.6,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_4" UnSafe="False" WorkflowFileName="EscribirCelda.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="x:String" x:Key="Excel_Destino">
-          <Literal x:TypeArguments="x:String">C:\Users\Usuario\Downloads\Vendor List.xlsx</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="Hoja_Excel">
-          <Literal x:TypeArguments="x:String">Vendor list</Literal>
-        </InArgument>
-        <InArgument x:TypeArguments="x:Int32" x:Key="PosExcelCode">
-          <mva:VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="PosicionCode" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:Double" x:Key="Resultado">
-          <mva:VisualBasicValue x:TypeArguments="x:Double" ExpressionText="Resultado" />
-        </InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Excel_Destino">[in_Config("Excel_Destino").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="Hoja_Excel">[in_Config("Hoja_Excel").ToString]</InArgument>
+        <InArgument x:TypeArguments="x:Int32" x:Key="PosExcelCode">[PosicionCode]</InArgument>
+        <InArgument x:TypeArguments="x:Double" x:Key="Resultado">[Resultado]</InArgument>
       </ui:InvokeWorkflowFile.Arguments>
     </ui:InvokeWorkflowFile>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="433.6,290.4" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Vendors\Vendor List.xlsx">
-      <ui:ExcelApplicationScope.Body>
-        <ActivityAction x:TypeArguments="ui:WorkbookApplication">
-          <ActivityAction.Argument>
-            <DelegateInArgument x:TypeArguments="ui:WorkbookApplication" Name="ExcelWorkbookScope" />
-          </ActivityAction.Argument>
-          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="375.2,180.8" sap2010:WorkflowViewState.IdRef="Sequence_2">
-            <sap:WorkflowViewStateService.ViewState>
-              <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
-              </scg:Dictionary>
-            </sap:WorkflowViewStateService.ViewState>
-            <ui:ExcelWriteCell Cell="[&quot;C&quot;+PosicionCode.ToString]" DisplayName="Write Cell" sap:VirtualizedContainerService.HintSize="333.6,88" sap2010:WorkflowViewState.IdRef="ExcelWriteCell_1" SheetName="Vendor list" Text="[Resultado.ToString]" />
-          </Sequence>
-        </ActivityAction>
-      </ui:ExcelApplicationScope.Body>
-    </ui:ExcelApplicationScope>
   </Sequence>
 </Activity>
