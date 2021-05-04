@@ -2,11 +2,13 @@
   <x:Members>
     <x:Property Name="in_Transaction" Type="InArgument(x:String)" />
     <x:Property Name="Posicion" Type="OutArgument(x:Int32)" />
+    <x:Property Name="Excel_Destino" Type="InArgument(x:String)" />
+    <x:Property Name="Hoja_Excel" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>778.4,1119.2</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>708,1119.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ObtenerNumCelda_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="56">
@@ -66,20 +68,16 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="ObtenerNumCelda" sap:VirtualizedContainerService.HintSize="718.4,1054.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Obtener_Num_Celda" sap:VirtualizedContainerService.HintSize="718.4,1054.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:Int32" Name="Contador">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:Int32" Value="1" />
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:Int32" Default="1" Name="Contador" />
     </Sequence.Variables>
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="676.8,961.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="C:\Vendors\Vendor List.xlsx">
+    <ui:ExcelApplicationScope Password="{x:Null}" DisplayName="Excel Application Scope" sap:VirtualizedContainerService.HintSize="676.8,961.6" sap2010:WorkflowViewState.IdRef="ExcelApplicationScope_1" InstanceCachePeriod="3000" WorkbookPath="[Excel_Destino]">
       <ui:ExcelApplicationScope.Body>
         <ActivityAction x:TypeArguments="ui:WorkbookApplication">
           <ActivityAction.Argument>
@@ -100,7 +98,7 @@
                   <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
-              <ui:ExcelReadColumn DisplayName="Read Column" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="ExcelReadColumn_1" Result="[prueba]" SheetName="Vendor list" StartingCell="A1" />
+              <ui:ExcelReadColumn DisplayName="Read Column" sap:VirtualizedContainerService.HintSize="560,60" sap2010:WorkflowViewState.IdRef="ExcelReadColumn_1" Result="[prueba]" SheetName="[Hoja_Excel]" StartingCell="A1" />
               <ui:ForEach x:TypeArguments="x:Object" CurrentIndex="{x:Null}" DisplayName="For Each" sap:VirtualizedContainerService.HintSize="560,566.4" sap2010:WorkflowViewState.IdRef="ForEach`1_1" Values="[prueba]">
                 <ui:ForEach.Body>
                   <ActivityAction x:TypeArguments="x:Object">
@@ -109,11 +107,7 @@
                     </ActivityAction.Argument>
                     <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="524.8,432" sap2010:WorkflowViewState.IdRef="Sequence_4">
                       <Sequence.Variables>
-                        <Variable x:TypeArguments="x:String" Name="Code">
-                          <Variable.Default>
-                            <Literal x:TypeArguments="x:String">IT145632</Literal>
-                          </Variable.Default>
-                        </Variable>
+                        <Variable x:TypeArguments="x:String" Default="IT145632" Name="Code" />
                       </Sequence.Variables>
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
