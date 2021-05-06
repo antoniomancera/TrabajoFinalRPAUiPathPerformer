@@ -7,7 +7,7 @@
   <mva:VisualBasic.Settings>
     <x:Null />
   </mva:VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>825.6,1200</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>825.6,1315.2</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>EscribirSumaEnTotal_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <sco:Collection x:TypeArguments="x:String">
@@ -74,7 +74,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="Escribir_Suma_Total" sap:VirtualizedContainerService.HintSize="836,1135.2" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="Escribir_Suma_Total" sap:VirtualizedContainerService.HintSize="836,1250.4" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="Resultado" />
       <Variable x:TypeArguments="sd:DataTable" Name="TableConEUR" />
@@ -85,6 +85,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
+    <ui:Comment sap:VirtualizedContainerService.HintSize="794.4,75.2" sap2010:WorkflowViewState.IdRef="Comment_1" Text="// Sumamos todos los valores, y si es mayor que el Minimo (500000) lo añadimos al Excel" />
     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke FiltrarEUR workflow" sap:VirtualizedContainerService.HintSize="794.4,113.6" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="Filtrar_EUR.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <InArgument x:TypeArguments="sd:DataTable" x:Key="TableInput">[TableInput]</InArgument>
